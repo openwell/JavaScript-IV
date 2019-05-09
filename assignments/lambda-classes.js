@@ -33,16 +33,15 @@ class Student extends Person {
     this.favSubjects = value.favSubjects;
   }
   listsSubjects() {
-    let favSub = this.favSubjects.forEach(element => {
-      return element;
+    return this.favSubjects.forEach(element => {
+      console.log(element);
     });
-    return favSub;
   }
-  PRAssignment(student, subject) {
-    return `${student.name} has submitted a PR for ${subject}`;
+  PRAssignment(subject) {
+    return `${this.name} has submitted a PR for ${subject}`;
   }
-  sprintChallenge(student, subject) {
-    return `${student.name}  has begun sprint challenge on ${subject}`;
+  sprintChallenge(subject) {
+    return `${this.name}  has begun sprint challenge on ${subject}`;
   }
 }
 
@@ -54,11 +53,11 @@ class ProjectManager extends Instructor {
   }
   standUp(channel) {
     return `${
-      value.name
+      this.name
     } announces to ${channel}, @channel standy  times!​​​​​`;
   }
   debugsCode(student, subject) {
-    return `${value.name} debugs ${student.name}'s code on ${subject}`;
+    return `${this.name} debugs ${student.name}'s code on ${subject}`;
   }
 }
 
@@ -67,27 +66,6 @@ const anu = new Person({
   location: "Yaba",
   age: 44,
   gender: "male"
-});
-
-const fred = new Instructor({
-  name: "Fred",
-  location: "Bedrock",
-  age: 37,
-  gender: "male",
-  favLanguage: "JavaScript",
-  specialty: "Front-end",
-  catchPhrase: `Don't forget the homies`
-});
-const chinedu = new ProjectManager({
-  name: "Chinedu",
-  location: "MaryLand",
-  age: 27,
-  gender: "male",
-  favLanguage: "JavaScript",
-  specialty: "Fullstack",
-  catchPhrase: `No truth is certain until it works out`,
-  gradClassName: "WEBEU12",
-  favInstructor: "Gabe"
 });
 
 const john = new Student({
@@ -99,15 +77,35 @@ const john = new Student({
   className: "CS132",
   favSubjects: ["Array", "Function", "Class"]
 });
+const fred = new Instructor({
+  name: "Fred",
+  location: "Bedrock",
+  age: 37,
+  gender: "male",
+  favLanguage: "JavaScript",
+  specialty: "Front-end",
+  catchPhrase: `Don't forget the homies`
+});
+
+const chinedu = new ProjectManager({
+  name: "Chinedu",
+  location: "MaryLand",
+  age: 27,
+  gender: "male",
+  favLanguage: "JavaScript",
+  specialty: "Fullstack",
+  catchPhrase: `No truth is certain until it works out`,
+  gradClassName: "WEBEU12",
+  favInstructor: "Gabe"
+});
+console.log(john.name);
+console.log(john.listsSubjects());
+console.log(john.PRAssignment("Maths"));
+console.log(john.sprintChallenge("Maths"));
 
 console.log(fred.demo("Java"));
 console.log(fred.grade({ name: "John" }, "HTML"));
 console.log(fred.specialty);
-
-console.log(john.name);
-console.log(john.listsSubjects());
-console.log(john.PRAssignment("Array"));
-console.log(john.sprintChallenge("Array"));
 
 console.log(chinedu.name);
 console.log(chinedu.favInstructor);
